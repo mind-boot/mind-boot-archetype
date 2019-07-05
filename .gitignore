@@ -13,3 +13,4 @@ nuget/bootstrap-fileinput.*.nupkg
 .DS_Store
 logs
 *.sh
+log
