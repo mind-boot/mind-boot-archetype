@@ -1,0 +1,30 @@
+server:
+  port: 6005
+  servlet:
+    context-path: /${parentArtifactId}-api
+logging:
+  level:
+    ${package}: DEBUG
+spring:
+  datasource:
+    name: ${parentArtifactId}
+    url: jdbc:mysql://192.168.0.64:3306/${parentArtifactId}?characterEncoding=UTF-8
+    username: root
+    password: 111111
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  typeAliasesPackage: ${package}.core.bean
+  mapperLocations: classpath*:dao/**/*.xml
+mapper:
+  mappers:
+    - ${package}.commons.BaseDao
+  not-empty: false
+  identity: MYSQL
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+

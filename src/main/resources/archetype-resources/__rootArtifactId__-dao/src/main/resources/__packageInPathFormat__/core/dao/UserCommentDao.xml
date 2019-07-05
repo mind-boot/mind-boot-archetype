@@ -1,0 +1,103 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.core.dao.UserCommentDao">
+
+    <resultMap id="BaseResultMap" type="${package}.core.bean.UserComment">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="product_id" jdbcType="BIGINT" property="productId"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="shop_id" jdbcType="INTEGER" property="shopId"/>
+        <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
+        <result column="dest_name" jdbcType="VARCHAR" property="destName"/>
+        <result column="comment" jdbcType="VARCHAR" property="comment"/>
+        <result column="entire_score" jdbcType="INTEGER" property="entireScore"/>
+        <result column="detail_score1" jdbcType="INTEGER" property="detailScore1"/>
+        <result column="detail_score2" jdbcType="INTEGER" property="detailScore2"/>
+        <result column="detail_score3" jdbcType="INTEGER" property="detailScore3"/>
+        <result column="detail_score4" jdbcType="INTEGER" property="detailScore4"/>
+        <result column="is_picture" jdbcType="BIT" property="isPicture"/>
+        <result column="pic_num" jdbcType="INTEGER" property="picNum"/>
+        <result column="is_essence" jdbcType="BIT" property="isEssence"/>
+        <result column="like_num" jdbcType="INTEGER" property="likeNum"/>
+        <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime"/>
+        <result column="audit_user" jdbcType="VARCHAR" property="auditUser"/>
+        <result column="audit_status" jdbcType="INTEGER" property="auditStatus"/>
+        <result column="audit_result" jdbcType="TINYINT" property="auditResult"/>
+        <result column="is_show" jdbcType="BIT" property="isShow"/>
+        <result column="source_code" jdbcType="VARCHAR" property="sourceCode"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="is_delete" jdbcType="BIT" property="isDelete"/>
+    </resultMap>
+
+    <select id="selectAuditCommentList" resultType="${package}.core.bean.dto.AuditUserCommentDTO"
+            parameterType="${package}.core.bean.query.AuditCommentQuery">
+        SELECT t.`id`, t.`user_name` AS userName, t.`category_id` AS categoryId, t.`product_id` AS productId,
+        t.`product_name` AS productName, t.`comment`, t.`pic_num` AS picNum, t.`is_essence` AS isEssencebol,
+        t.`audit_status` AS auditStatusbol, t.`is_show` AS isShowbol, t.`audit_time` AS auditTimeDate,
+        t.`create_time` AS createTimeDate, t.`is_show` AS isShowbol, t.`audit_result` AS auditResult,
+        t.`entire_score` AS entireScore, t.`detail_score1` AS detailScore1, t.`detail_score2` AS detailScore2,
+        t.`detail_score3` AS detailScore3, t.`detail_score4` AS detailScore4, t.`audit_user` AS auditUser,
+        t.`order_id` AS orderId, t.`source_code` AS sourceCode, t.`is_picture` AS isPicture
+        FROM `user_comment` t
+        WHERE t.`is_delete` = FALSE
+        <if test="null != auditStatus">
+            AND t.`audit_status` = ${symbol_pound}{auditStatus}
+        </if>
+        <if test="null != shopId and shopId > 0">
+            AND t.`shop_id` = ${symbol_pound}{shopId}
+        </if>
+        <if test="null != id and id > 0">
+            AND t.`id` = ${symbol_pound}{id}
+        </if>
+        <if test="null != isEssence">
+            AND t.`is_essence` = ${symbol_pound}{isEssence}
+        </if>
+        <if test="null != isShow">
+            AND t.`is_show` = ${symbol_pound}{isShow}
+        </if>
+        <if test="null != isPicture">
+            AND t.`is_picture` = ${symbol_pound}{isPicture}
+        </if>
+        <if test="null != userName and userName != ''">
+            AND t.`user_name` LIKE CONCAT('%', ${symbol_pound}{userName}, '%')
+        </if>
+        <if test="null != orderId and orderId > 0">
+            AND t.`order_id` = ${symbol_pound}{orderId}
+        </if>
+        <if test="null != productId and productId > 0">
+            AND t.`product_id` = ${symbol_pound}{productId}
+        </if>
+        <if test="null != productName and productName != ''">
+            AND t.`product_name` LIKE CONCAT('%', ${symbol_pound}{productName}, '%')
+        </if>
+        <if test="null != destName and destName != ''">
+            AND t.`dest_name` LIKE CONCAT('%', ${symbol_pound}{destName}, '%')
+        </if>
+        <if test="null != categoryId and categoryId > 0">
+            AND t.`category_id` = ${symbol_pound}{categoryId}
+        </if>
+        <if test="null != sourceCode and sourceCode != ''">
+            AND t.`source_code` = ${symbol_pound}{sourceCode}
+        </if>
+        <if test="null != auditStartTime and auditStartTime != ''">
+            AND t.`audit_time` >= ${symbol_pound}{auditStartTime}
+        </if>
+        <if test="null != auditEndTime and auditEndTime != ''">
+            AND ${symbol_pound}{auditEndTime} >= t.`audit_time`
+        </if>
+        <if test="null != createStartTime and createStartTime != ''">
+            AND t.`create_time` >= ${symbol_pound}{createStartTime}
+        </if>
+        <if test="null != createEndTime and createEndTime != ''">
+            AND ${symbol_pound}{createEndTime} >= t.`create_time`
+        </if>
+        ORDER BY t.`create_time` DESC
+    </select>
+</mapper>
