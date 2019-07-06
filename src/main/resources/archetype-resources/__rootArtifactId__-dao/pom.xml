@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.github.mind-boot</groupId>
             <artifactId>mind-boot-starter-dao</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0-RELEASE</version>
         </dependency>
     </dependencies>
 
