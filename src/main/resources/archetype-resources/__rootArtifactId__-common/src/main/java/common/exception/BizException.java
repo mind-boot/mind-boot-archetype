@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.common.exception;
 
-import com.mind.common.exception.BaseBizException;
+import io.github.mind.boot.common.exception.BaseBizException;
 import ${package}.common.enums.ErrorCodeEnum;
 /**
  * service业务处理异常

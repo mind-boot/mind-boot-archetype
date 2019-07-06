@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.core.bean.query;
 
-import com.mind.common.base.BaseQuery;
+import io.github.mind.boot.common.base.BaseQuery;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

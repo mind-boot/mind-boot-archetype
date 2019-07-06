@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
-import com.mind.core.MindBootApplication;
+import io.github.mind.boot.core.MindBootApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;

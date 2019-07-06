@@ -5,7 +5,7 @@ package ${package}.core.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mind.common.base.ResultBase;
+import io.github.mind.boot.common.base.ResultBase;
 import ${package}.core.bean.dto.AuditUserCommentDTO;
 import ${package}.core.bean.query.AuditCommentQuery;
 import ${package}.core.dao.UserCommentDao;

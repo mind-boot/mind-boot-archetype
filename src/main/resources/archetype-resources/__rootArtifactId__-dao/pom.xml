@@ -16,7 +16,7 @@
             <version>${version}</version>
         </dependency>
         <dependency>
-            <groupId>com.mind.boot</groupId>
+            <groupId>io.github.mind-boot</groupId>
             <artifactId>mind-boot-starter-dao</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
