@@ -9,6 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public class JSONConversionUtil {
         ObjectMapper om = new ObjectMapper();
         //非空
         om.setSerializationInclusion(Include.NON_NULL);
+        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         StringWriter w = new StringWriter();
         try {
             om.writeValue(w, o);
@@ -64,6 +66,7 @@ public class JSONConversionUtil {
     public static <T> T stringToObj(String content, Class<T> cls) {
         log.info("stringToObj start.");
         ObjectMapper om = new ObjectMapper();
+        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
             return om.readValue(content, cls);
         } catch (JsonParseException e) {
