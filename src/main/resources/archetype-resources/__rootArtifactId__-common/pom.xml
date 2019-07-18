@@ -12,7 +12,7 @@
         <dependency>
             <groupId>io.github.mind-boot</groupId>
             <artifactId>mind-boot-common</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>EASE</version>
         </dependency>
     </dependencies>
 

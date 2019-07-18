@@ -4,7 +4,7 @@
 ## 创建项目
 命令模板：
 ```
-mvn archetype:generate -DarchetypeGroupId=io.github.mind-boot -DarchetypeArtifactId=mind-boot-archetype -DarchetypeVersion=1.0.0-RELEASE -DarchetypeCatalog=local -DgroupId="被创建项目的groupId" -DartifactId="被创建项目的artifactId" -Dversion="被创建项目的版本"
+mvn archetype:generate -DarchetypeGroupId=io.github.mind-boot -DarchetypeArtifactId=mind-boot-archetype -DarchetypeVersion=1.0.0 -DarchetypeCatalog=local -DgroupId="被创建项目的groupId" -DartifactId="被创建项目的artifactId" -Dversion="被创建项目的版本"
 
 参数说明：
 -DgroupId 指定groupId
@@ -12,5 +12,5 @@ mvn archetype:generate -DarchetypeGroupId=io.github.mind-boot -DarchetypeArtifac
 -Dversion 指定项目版本号
 
 命令样例：
-mvn archetype:generate -DarchetypeGroupId=io.github.mind-boot -DarchetypeArtifactId=minid-boot-archetype -DarchetypeVersion=1.0.0-RELEASE -DarchetypeCatalog=local -DgroupId=io.github.mind-boot.demo -DartifactId=demo -Dversion=1.0.0-RELEASE
+mvn archetype:generate -DarchetypeGroupId=io.github.mind-boot -DarchetypeArtifactId=minid-boot-archetype -DarchetypeVersion=1.0.0 -DarchetypeCatalog=local -DgroupId=io.github.mind-boot.demo -DartifactId=demo -Dversion=1.0.0
 ```
