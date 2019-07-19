@@ -32,7 +32,7 @@
         </plugin>
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="${package}.mysql.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://192.168.0.64:3306/${rootArtifactId}?useUnicode=true&amp;characterEncoding=utf-8" userId="root"
                         password="111111">
         </jdbcConnection>
