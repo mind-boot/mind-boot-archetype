@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.github.mind-boot</groupId>
         <artifactId>mind-boot</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
     <artifactId>${artifactId}</artifactId>
     <groupId>${groupId}</groupId>

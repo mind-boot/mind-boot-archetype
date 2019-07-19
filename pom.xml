@@ -4,7 +4,7 @@
 
   <groupId>io.github.mind-boot</groupId>
   <artifactId>mind-boot-archetype</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <url>https://github.com/mind-boot/mind-boot-archetype</url>
   <packaging>maven-archetype</packaging>
 
