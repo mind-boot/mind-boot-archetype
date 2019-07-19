@@ -116,7 +116,7 @@ public class JSONConversionUtil {
      * @return
      */
     public static Map<String, String> jsonToHashMap(String strJSON) {
-        Map<String, String> dataMap = new HashMap<String, String>();
+        Map<String, String> dataMap = new HashMap<>();
         try {
             if (StringUtil.isValid(strJSON)) {
                 JSONObject jsonObject = JSON.parseObject(strJSON);
