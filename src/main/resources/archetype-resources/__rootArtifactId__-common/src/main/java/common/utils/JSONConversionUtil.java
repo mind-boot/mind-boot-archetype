@@ -5,6 +5,7 @@ package ${package}.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -159,5 +160,50 @@ public class JSONConversionUtil {
             log.info("praseParameterObj error:{}", e.getMessage(), e);
         }
         return map;
+    }
+
+    /**
+     * 通过json对象中的key递归查找值
+     *
+     * @param object json对象或数组
+     * @param key    键
+     * @return 对应string的值
+     */
+    public static String getValueByKeyFromJson(Object object, String key) {
+        if (object == null || object == "") return null;
+        Class<?> cls = object.getClass();
+        if (cls == JSONObject.class) {
+            JSONObject jo = (JSONObject) object;
+            if (jo.containsKey(key)) {
+                return jo.getString(key);
+            }
+            for (Object o : jo.values()) {
+                String tmp = getValueByKeyFromJson(o, key);
+                if (tmp != null) {
+                    return tmp;
+                }
+            }
+        } else if (cls == JSONArray.class) {
+            JSONArray ja = (JSONArray) object;
+            for (Object o : ja) {
+                if (o != null && o != "") {
+                    String tmp = getValueByKeyFromJson(o, key);
+                    if (tmp != null) {
+                        return tmp;
+                    }
+                }
+            }
+        } else if (cls == String.class) {
+            Object o;
+            try {
+                o = JSON.parse((String) object);
+                String tmp = getValueByKeyFromJson(o, key);
+                if (tmp != null) {
+                    return tmp;
+                }
+            } catch (JSONException ignored) {
+            }
+        }
+        return null;
     }
 }
