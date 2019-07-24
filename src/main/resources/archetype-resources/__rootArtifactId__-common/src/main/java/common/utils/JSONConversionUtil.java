@@ -1,8 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.common.utils;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
@@ -19,6 +14,11 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.util.*;
+
+#set($symbol_pound='#')
+        #set($symbol_dollar='$')
+        #set($symbol_escape='\' )
+        package ${package}.common.utils;
 
 /**
  * json转换工具类
@@ -141,7 +141,7 @@ public class JSONConversionUtil {
     /**
      * 对象转HashMap，基于反射
      *
-     * @param obj         对象
+     * @param obj          对象
      * @param ignoreFields 忽略字段
      * @return 结果
      */
@@ -165,7 +165,7 @@ public class JSONConversionUtil {
     /**
      * 通过json对象中的key递归查找值
      *
-     * @param object json对象或数组
+     * @param object json任意格式
      * @param key    键
      * @return 对应string的值
      */
@@ -194,9 +194,8 @@ public class JSONConversionUtil {
                 }
             }
         } else if (cls == String.class) {
-            Object o;
             try {
-                o = JSON.parse((String) object);
+                Object o = JSON.parse((String) object);
                 String tmp = getValueByKeyFromJson(o, key);
                 if (tmp != null) {
                     return tmp;
